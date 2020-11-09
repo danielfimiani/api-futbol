@@ -10,9 +10,7 @@ router.use("/jugadores", require("./jugadoresRouter"));
 router.use("/partidos", require("./partidosRouter"));
 
 router.get("/", (req, res) => {
-  res.json({
-    Respuesta: "hola home",
-  });
+  res.json({ Respuesta: "Home" });
 });
 
 module.exports = router;

@@ -3,6 +3,7 @@ var path = require("path");
 // requires
 const express = require("express");
 const bodyparser = require("body-parser");
+const open = require("open");
 //var mysql = require("mysql");
 require("dotenv").config();
 
@@ -30,5 +31,5 @@ app.use("/api-futbol", indexRouter);
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-  console.log(`Server running on  http://localhost:${port}`);
+  console.log(`Server running on  http://localhost:${port}/api-futbol`);
 });

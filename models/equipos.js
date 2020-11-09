@@ -1,23 +1,16 @@
-const equipos = [
-  {
-    id_equipo: 1,
-    nombre_equipo: "Equipo1",
-  },
-  {
-    id_equipo: 2,
-    nombre_equipo: "Equipo2",
-  },
-  {
-    id_equipo: 3,
-    nombre_equipo: "Equipo3",
-  },
-  {
-    id_equipo: 4,
-    nombre_equipo: "Equipo4",
-  },
-  {
-    id_equipo: 5,
-    nombre_equipo: "Equipo5",
-  },
-];
-module.exports = equipos;
+const pool = require("./../utils/db");
+const T_EQUIPOS = "equipos";
+
+const get = (conditions = true) =>
+  pool
+    .query("SELECT * FROM ?? WHERE ?", [T_EQUIPOS, conditions])
+    .then((result) => result)
+    .catch((e) => e);
+
+const single = async (id) => {
+  const query = "SELECT * FROM ?? as eq where eq.id_equipo = ?";
+  const params = [T_EQUIPOS, id];
+  return await pool.query(query, params);
+};
+
+module.exports = { get, single };
